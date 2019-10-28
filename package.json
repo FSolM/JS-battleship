@@ -1,0 +1,22 @@
+{
+  "name": "js-battleship",
+  "version": "1.0.0",
+  "description": "A JS Battleship game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FSolM/JS-battleship.git"
+  },
+  "author": "FSolM & diegoarvz4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FSolM/JS-battleship/issues"
+  },
+  "homepage": "https://github.com/FSolM/JS-battleship#readme",
+  "devDependencies": {
+    "webpack": "^4.41.2"
+  }
+}
