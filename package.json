@@ -4,7 +4,10 @@
   "description": "A JS Battleship game",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "watch:test": "jest --watch",
+    "watch:build": "webpack --watch",
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,11 @@
   },
   "homepage": "https://github.com/FSolM/JS-battleship#readme",
   "devDependencies": {
-    "webpack": "^4.41.2"
+    "@babel/preset-env": "^7.6.3",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
   }
 }
