@@ -1,22 +1,197 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.square {
+[id*=battleship] {
+  width: 160px;
+  height: 40px;
+  border: 0.5px solid gray;
+}
+
+[id*=cruiser] {
+  border: 0.5px solid gray;
+}
+
+[id*=destroyer] {
+  border: 0.5px solid gray;
+}
+
+[id*=submarine] {
+  border: 0.5px solid gray;
+}
+
+[id*=rectangle] {
   width: 80px;
+  height: 40px;
+  border: 0.5px solid gray;
+}
+
+.horizontal-battleship {
+  width: 160px;
+  height: 40px;
+}
+
+.horizontal-cruiser {
+  width: 120px;
+  height: 40px;
+}
+
+.horizontal-destroyer {
+  width: 80px;
+  height: 40px;
+}
+
+.horizontal-submarine {
+  width: 40px;
+  height: 40px;
+}
+
+.vertical-battleship {
+  height: 160px;
+  width: 40px;
+}
+
+.vertical-cruiser {
+  height: 120px;
+  width: 40px;
+}
+
+.vertical-destroyer {
   height: 80px;
-  border: 1px solid black;
+  width: 40px;
+}
+
+.vertical-submarine {
+  height: 40px;
+  width: 40px;
 }
 
 .cell {
-  width: 100px;
-  height: 100px;
-  border: 1px solid gray;
+  min-width: 40px;
+  min-height: 40px;
+  position: relative;
 }
 
-.dragenter {
-  cursor: selector;
-  opacity: 0;
+.inner-border {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.first-border {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.bottom-right-border {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.last-row-inner-border {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+#board {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 420px;
+}
+
+.cells {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.drag-start {
+  cursor: move;
+  background-color: brown;
+}
+
+.invisible {
+  display: none;
+}
+
+.dropped {
+  position: absolute;
+  z-index: 10;
+  background-color: blue;
 }
 /*# sourceMappingURL=style.css.map */
