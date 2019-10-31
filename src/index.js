@@ -1,6 +1,7 @@
-import shipHandling from './board/shipHandling';
+import shipHandling from './ships/shipHandling';
 import boardRender from './board/boardRender';
-
+import gameBoard from './board/gameBoard';
+import ship from './ships/ship';
 // TODO Modulate Ship Generator
 
 (() => {
@@ -10,35 +11,31 @@ import boardRender from './board/boardRender';
       quantity: 1,
       name: 'battleship'
     }
-
     const cruisers = {
       size: 3,
       quantity: 2,
       name: 'cruiser'
     }
-
     const destroyers = {
       size: 2,
       quantity: 3,
       name: 'destroyer'
     }
-
     const submarines = {
       size:1,
       quantity: 4,
       name: 'submarine'
     }
-
     const ships = [battleships, cruisers, destroyers, submarines]
-
     const shipsContainer = document.getElementById('ships');
-
     let shipsHtml = ""
 
-    ships.forEach( (ship) => {
-      const quantity = ship.quantity;
+    ships.forEach( (current_ship) => {
+      const quantity = current_ship.quantity;
       for (let i = 0; i < quantity; i += 1){
-        shipsHtml += `<div id="${ship.name}-${i}" class="ship-${ship.name}-${i} horizontal-${ship.name}" draggable="true"></div>`
+        const newShip = ship(current_ship.name+"-"+i, current_ship.name, current_ship.size);
+        gameBoard.addPlayerShip(newShip);
+        shipsHtml += `<div id="${current_ship.name}-${i}" class="ship-${current_ship.name}-${i} horizontal-${current_ship.name}" draggable="true"></div>`
       }
     });
 
