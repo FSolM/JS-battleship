@@ -1,103 +1,87 @@
-import gameBoard from '../../board/gameBoard'
-export default(() => {
+import gameBoard from '../../board/gameBoard';
+
+export default (() => {
   let dragged = '';
 
-  const getDragged = () => {
-    return dragged
-  }
+  const getDragged = () => dragged;
 
   const setDragged = (id) => {
     dragged = id;
-  }
+  };
 
   const dragStart = (e) => {
     e.target.classList.add('drag-start');
     e.dataTransfer.setData('text', e.target.id);
     const removedPositions = gameBoard.resetShipPositions(e.target.id);
-    if (removedPositions){
+    if (removedPositions) {
       gameBoard.removePlayerPositions(removedPositions);
     }
     setDragged(e.target.id)
-    setTimeout(() => (e.target.classList.add('invisible')),0);
-  }
+    setTimeout(() => (e.target.classList.add('invisible')), 0);
+  };
   
   const dragEnd = (e) => {
     e.target.classList.remove('invisible');
     e.target.classList.remove('drag-start');
-  }
+  };
   
   const rotate = (e) => {
     const currentShip = gameBoard.getShip(e.target.id);
-    const row = parseInt(currentShip.getPositions()[0].match(/\d+/)[0]); // will get de 1 in 1-b
-    const col = currentShip.getPositions()[0].match(/[a-j]/)[0]; // will get the a in 10-a
+    const row = parseInt(currentShip.getPositions()[0].match(/\d+/)[0]); // Will obtain pivot position and extract the numbers from 1 to 10
+    const col = currentShip.getPositions()[0].match(/[a-j]/)[0]; // Will obtain the pivot position and extract the letters from a to j
     const removePositions = [...currentShip.getPositions()].splice(1);
     const orientation = e.target.className.match(/horizontal|vertical/)[0];
-    const letters = "abcdefghij".split("");
+    const letters = 'abcdefghij'.split('');
     let positions = [];
     if (currentShip.getPositions().length > 1) {
-      for (let i = 1; i < currentShip.getPositions().length; i+=1) {
-        let pos = '';
-        if(orientation === 'vertical') {
-          // console.log('Vertical')
-          // console.log({ row, col, i })
-          pos = row + '-' +letters[(letters.indexOf(col)) + i];
-        } else if(orientation === 'horizontal') {
-          // console.log('Horizontal')
-          // console.log({ row, col, i })
-          pos = (row + i) + '-' + col;
+      for (let i = 1; i < currentShip.getPositions().length; i += 1) {
+        if (orientation === 'vertical') {
+          positions.push(`${row}-${letters[(letters.indexOf(col)) + i]}`);
+        } else
+        if (orientation === 'horizontal') {
+          positions.push(`${row + i}-${col}`);
         }
-        positions.push(pos);
       }
       currentShip.overridePositions(positions);
     }
-    
-    if (!gameBoard.hasPlayerPositions(positions)){
+    if (!gameBoard.hasPlayerPositions(positions)) {
       gameBoard.removePlayerPositions(removePositions);
-      // gameBoard.addShipPositions(e.target.id, positions);
       gameBoard.addPlayerPositions(positions);
-      console.log("Player positions updated: "+ gameBoard.getPlayerPositions());
       changeStyleOrientation(e);
     }
-    
-  } 
-  
+  };
+
+  const updateOrientation = (target, orientation, offset) => {
+    target.classList.remove(orientation);
+    let position = '';
+    if (orientation.includes('vertical')) {
+      position = 'horizontal';
+    } else
+    if (orientation.includes('horizontal')) {
+      position = 'vertical';
+    }
+    target.classList.add(`${position}${orientation.substring(offset)}`);
+  };
+
   const changeStyleOrientation = (e) => {
     e.target.classList.forEach((cssClass) => {
       if (/^horizontal/.test(cssClass)) {
-        e.target.classList.remove(cssClass);
-        const newClass = 'vertical' + cssClass.substring(10);
-        e.target.classList.add(newClass);
-        return;
-      } else if (/^vertical/.test(cssClass)) {
-        e.target.classList.remove(cssClass);
-        const newClass = 'horizontal' + cssClass.substring(8);
-        e.target.classList.add(newClass);
-        return;
+        updateOrientation(e.target, cssClass, 10);
+      } else
+      if (/^vertical/.test(cssClass)) {
+        updateOrientation(e.target, cssClass, 8);
       }
     });
-    if (e.target.classList.contains('horizontal')) {
-      e.target.classList.remove('horizontal');
-      e.target.classList.add('vertical');
-    } else
-    if (e.target.classList.contains('vertical')) {
-      e.target.classList.remove('vertical');
-      e.target.classList.add('horizontal');
-    }
-  }
+  };
 
   const init = () => {
     const ships =  document.querySelectorAll('*[class^="ship"]');
-    for (const ship of ships){
+    for (const ship of ships) {
       ship.addEventListener('dragstart', dragStart, false);
       ship.addEventListener('dragend', dragEnd, false);
       ship.addEventListener('click', rotate, false);
     }
-  }
+  };
 
-  
-
-  return {
-    init,
-    getDragged,
-  }
+  return { init, getDragged };
 })();

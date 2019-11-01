@@ -1,36 +1,31 @@
 import gameBoard from '../../board/gameBoard';
-import ship from '../ship';
 import draggableEvents from './draggableEvents'
 
 const dragOver = (e) => {
   e.preventDefault();    
-}
-
-// Check methods
+};
 
 const notValidMove = (e) => {
   const draggedId = draggableEvents.getDragged();
   const dragged = document.getElementById(draggedId);
   const positions = getPositions(e.target.id, dragged.className, getSize(draggedId));
   const totalPositions = [e.target.id.substring(5), ...positions];
-  let returning = false;
-  totalPositions.forEach((position) => {
-    if (position.match(/undefined/)){
-      returning = !returning;
+  for (let i = 0; i < totalPositions.length; i += 1) {
+    if (totalPositions[i].match(/undefined/)) {
+      return true;
     }
-  })
-  console.log("Evaluate this positions: "+totalPositions);
+  }
   const result = gameBoard.hasPlayerPositions(totalPositions);
-  return result || returning;
-}
+  return result;
+};
 
 const dragEnter = (e) => {
   e.preventDefault();
-}
+};
 
 const dragLeave = (e) => {
   e.preventDefault();
-}
+};
 
 const splitClasses = (classString) => {
   const classArray = classString.split(' ');
@@ -41,72 +36,68 @@ const splitClasses = (classString) => {
 const getSize = (ship_id) => {
   if (ship_id.match(/battleship/)){
     return 4; 
-  } else if (ship_id.match(/cruiser/)){
+  } else
+  if (ship_id.match(/cruiser/)){
     return 3;
-  } else if (ship_id.match(/destroyer/)){
+  } else
+  if (ship_id.match(/destroyer/)){
     return 2;
-  } else if (ship_id.match(/submarine/)){
+  } else
+  if (ship_id.match(/submarine/)){
     return 1;
   }
-}
+};
 
 const getPositions = (position, classes, size) => {
-  console.log("********************")
-  console.log("Position Received " + position)
-  const row = parseInt(position.match(/\d+/)[0]); // will get de 1 in 1-b
-  const col = position.substring(5).match(/[a-j]/)[0]; // will get the a in 10-a
+  const row = parseInt(position.match(/\d+/)[0]); // Will get positions from 1 to 10
+  const col = position.substring(5).match(/[a-j]/)[0]; // Will get positions from a to j
   const orientation = classes.match(/horizontal|vertical/)[0];
-  const letters = "abcdefghij".split("");
-  let positions = []
+  const letters = 'abcdefghij'.split('');
+  let positions = [];
   if (size > 1) {
-    for (let i = 1; i < size; i+=1) {
-      let pos = '';
-      if(orientation === 'horizontal') {
-        pos = row + '-' + letters[(letters.indexOf(col) + i)];
-      } else if(orientation === 'vertical') {
-        pos = (row + i) + '-' + col;
+    for (let i = 1; i < size; i += 1) {
+      if (orientation === 'horizontal') {
+        positions.push(`${row}-${letters[(letters.indexOf(col) + i)]}`);
+      } else
+      if (orientation === 'vertical') {
+        positions.push(`${row + i}-${col}`);
       }
-      positions.push(pos);
     }
   }
   return positions;
 }
 
 const setPositions = (cell, node, ship_id) => {
-  console.log("Setting Positions");
-  const position = cell.id.substring(5); //should be 1-a, d-6, or so...
+  const position = cell.id.substring(5); // Sets mixed positions like 1-a, 2-b, ...
   const size = getSize(ship_id);
-  const positions = [position, ...getPositions(cell.id, node.className, size)]
+  const positions = [position, ...getPositions(cell.id, node.className, size)];
   const newPositions = gameBoard.addShipPositions(ship_id, positions);
-  if (newPositions){
+  if (newPositions) {
     gameBoard.addPlayerPositions(newPositions);
   }
-  console.log("Player positions updated: "+ gameBoard.getPlayerPositions());
-}
+};
 
 const onDrop = (e) => {
-  console.log("On Drop...")
   const id = e.dataTransfer.getData('text');
   const child = document.getElementById(id);
   const removedPositions = gameBoard.resetShipPositions(id);
-  if (removedPositions){
+  if (removedPositions) {
     gameBoard.removePlayerPositions(removedPositions);
   }
   e.target.appendChild(child);
   setPositions(e.target, child, id);
   child.className = splitClasses(child.className);
-}
+};
 
 const drop = (e) => {
   e.preventDefault();
   if (notValidMove(e)){
     return
-  } else if (/^cell/.test(e.target.id)) {
+  } else
+  if (/^cell/.test(e.target.id)) {
     onDrop(e);
   }
-}
-
-// Check methods
+};
 
 export default () => {
   const cells = document.querySelectorAll('.cell');
@@ -116,4 +107,4 @@ export default () => {
     cell.addEventListener('dragleave', dragLeave, false);
     cell.addEventListener('drop', drop, false);
   }
-}
+};
