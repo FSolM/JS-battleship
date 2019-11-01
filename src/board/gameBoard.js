@@ -20,7 +20,9 @@ export default (() => {
   const addShipPositions = (id, positions) => {
     for (let i = 0; i < playerShips.length; i += 1) {
       if (playerShips[i].getID() === id) {
-        positions.forEach((position) => playerShips[i].addPosition(position));
+        positions.forEach((position) => {
+          playerShips[i].addPosition(position);
+        });
         return playerShips[i].getPositions();
       }
     }
@@ -56,6 +58,13 @@ export default (() => {
     }
   };
 
+  const removeAllShipsPositions = () => {
+    playerShips.forEach((ship) => {
+      ship.resetPositions();
+    });
+    playerPositions = [];
+  };
+
   const removeLastPlayerPosition = () => {
     playerPositions.pop();
   };
@@ -77,6 +86,7 @@ export default (() => {
     addPlayerShip,
     getShip,
     addShipPositions,
+    removeAllShipsPositions,
     removePlayerPositions, 
     removeShipPositions,
     resetShipPositions,
