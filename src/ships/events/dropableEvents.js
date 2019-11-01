@@ -15,8 +15,7 @@ const notValidMove = (e) => {
       return true;
     }
   }
-  const result = gameBoard.hasPlayerPositions(totalPositions);
-  return result;
+  return gameBoard.hasPlayerPositions(totalPositions);
 };
 
 const dragEnter = (e) => {

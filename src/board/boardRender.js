@@ -22,7 +22,7 @@ const generateBoard = () => {
       row += `<div id="cell-${i + 1}-${letters[j]}" class="cell ${getBorderClass(i, j, 10)}"></div>`
     }
     row += "</div>"
-    board.innerHTML+= row;
+    board.innerHTML += row;
   }
 }
 
