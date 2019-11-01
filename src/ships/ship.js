@@ -25,6 +25,13 @@ export default (id, type, size) => {
     positions.push(position);
   }
 
+  const overridePositions = (newPositions) => {
+    const pivot = positions[0];
+    console.log(newPositions)
+    positions = [pivot, ...newPositions];
+    console.log({ pivot, positions, newPositions })
+  };
+
   const resetPositions = () => {
     const previousPositions = [...positions];
     positions = [];
@@ -34,6 +41,7 @@ export default (id, type, size) => {
   const hit = (position) => {
     hitPositions.push(position);
   }
+
   const isSunk = () => {
     positions.length === hitPositions.length;
   }
@@ -44,6 +52,7 @@ export default (id, type, size) => {
     getSize,
     getPositions,
     addPosition,
+    overridePositions,
     resetPositions,
     removePositions,
     hit,

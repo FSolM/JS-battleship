@@ -33,24 +33,27 @@ export default(() => {
     const removePositions = [...currentShip.getPositions()].splice(1);
     const orientation = e.target.className.match(/horizontal|vertical/)[0];
     const letters = "abcdefghij".split("");
-    let positions = []
-    console.log(currentShip.getPositions().length)
+    let positions = [];
     if (currentShip.getPositions().length > 1) {
       for (let i = 1; i < currentShip.getPositions().length; i+=1) {
         let pos = '';
         if(orientation === 'vertical') {
-          console.log("going from vertical to horizontal")
-          pos = row + '-' +letters[(letters.indexOf(col) + i)];
+          // console.log('Vertical')
+          // console.log({ row, col, i })
+          pos = row + '-' +letters[(letters.indexOf(col)) + i];
         } else if(orientation === 'horizontal') {
+          // console.log('Horizontal')
+          // console.log({ row, col, i })
           pos = (row + i) + '-' + col;
         }
         positions.push(pos);
       }
+      currentShip.overridePositions(positions);
     }
     
     if (!gameBoard.hasPlayerPositions(positions)){
       gameBoard.removePlayerPositions(removePositions);
-      gameBoard.addShipPositions(e.target.id, positions);
+      // gameBoard.addShipPositions(e.target.id, positions);
       gameBoard.addPlayerPositions(positions);
       console.log("Player positions updated: "+ gameBoard.getPlayerPositions());
       changeStyleOrientation(e);

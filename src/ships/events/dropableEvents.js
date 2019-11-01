@@ -62,7 +62,7 @@ const getPositions = (position, classes, size) => {
     for (let i = 1; i < size; i+=1) {
       let pos = '';
       if(orientation === 'horizontal') {
-        pos = row + '-' +letters[(letters.indexOf(col) + i)];
+        pos = row + '-' + letters[(letters.indexOf(col) + i)];
       } else if(orientation === 'vertical') {
         pos = (row + i) + '-' + col;
       }
