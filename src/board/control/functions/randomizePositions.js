@@ -90,6 +90,7 @@ const resetPositions = () => {
   boardRender();
   shipHandling();
   gameBoard.removeAllShipsPositions();
+  usedPositions = [];
 };
 
 export default () => {
