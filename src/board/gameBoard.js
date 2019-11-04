@@ -28,7 +28,10 @@ export default (() => {
     }
   };
 
+  const addPlayerPosition = position => playerPositions.push(position);
+
   const addPlayerPositions = (positions) => {
+    console.log("positions: "+positions);
     positions.forEach(element => {
       playerPositions.push(element);
     });
@@ -75,18 +78,31 @@ export default (() => {
   const hasPlayerPositions = (positions) => {
     for (let i = 0; i < positions.length; i += 1) {
       if (playerPositions.includes(positions[i])) {
+        // playerPos.includes (i) && !(playerShip[i].position.includes(i))
         return true;
       }
     }
     return false;
   };
 
+  const isValidPosition = (positions, id) => {
+    const currentShipPositions = getShip(id).getPositions();
+    for (let i = 0; i < positions.length; i += 1) {
+      if (playerPositions.includes(positions[i]) && !(currentShipPositions.includes(positions[i]))) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   return { 
     getPlayerPositions, 
     addPlayerPositions, 
+    addPlayerPosition,
     addPlayerShip,
     getShip,
     addShipPositions,
+    isValidPosition,
     removeAllShipsPositions,
     removePlayerPositions, 
     removeShipPositions,

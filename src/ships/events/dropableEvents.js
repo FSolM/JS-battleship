@@ -15,8 +15,10 @@ const notValidMove = (e) => {
       return true;
     }
   }
-  return gameBoard.hasPlayerPositions(totalPositions);
+  return gameBoard.isValidPosition(totalPositions, draggedId);
 };
+
+
 
 const dragEnter = (e) => {
   e.preventDefault();

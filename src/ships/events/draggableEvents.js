@@ -12,10 +12,6 @@ export default (() => {
   const dragStart = (e) => {
     e.target.classList.add('drag-start');
     e.dataTransfer.setData('text', e.target.id);
-    const removedPositions = gameBoard.resetShipPositions(e.target.id);
-    if (removedPositions) {
-      gameBoard.removePlayerPositions(removedPositions);
-    }
     setDragged(e.target.id)
     setTimeout(() => (e.target.classList.add('invisible')), 0);
   };

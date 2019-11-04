@@ -68,12 +68,14 @@ const setPositions = () => {
       }
     }
   });
+
 };
 
 const sendData = () => {
   for (let i = 0; i < usedPositions.length; i += 1) {
     gameBoard.addPlayerShip(ship(usedPositions[i][0], usedPositions[i][0].split('-')[0], usedPositions[i][1].length));
     gameBoard.addShipPositions(usedPositions[i][0], usedPositions[i][1]);
+    gameBoard.addPlayerPositions(usedPositions[i][1]);
   }
 };
 
