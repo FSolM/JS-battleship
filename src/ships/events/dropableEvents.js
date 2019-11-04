@@ -11,11 +11,11 @@ const notValidMove = (e) => {
   const positions = getPositions(e.target.id, dragged.className, getSize(draggedId));
   const totalPositions = [e.target.id.substring(5), ...positions];
   for (let i = 0; i < totalPositions.length; i += 1) {
-    if (totalPositions[i].match(/undefined/)) {
+    if (totalPositions[i].match(/undefined/) || parseInt(totalPositions[i].match(/\d+/)[0]) > 10) {
       return true;
     }
   }
-  return gameBoard.isValidPosition(totalPositions, draggedId);
+  return gameBoard.isInvalidPosition(totalPositions, draggedId);
 };
 
 

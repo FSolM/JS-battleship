@@ -12,18 +12,16 @@ export default (id, type, size) => {
 
   const addPosition = (position) => {
     positions.push(position);
-    console.log("in ship add position")
-
-    console.log(positions)
   };
 
   const overridePositions = (newPositions) => {
     const pivot = positions[0];
+    const previousPositions = [...positions].splice(1)
     positions = [pivot, ...newPositions];
+    return previousPositions;
   };
 
   const resetPositions = () => {
-    console.log(positions)
     const previousPositions = [...positions];
     positions = [];
     return previousPositions;
