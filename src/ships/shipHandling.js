@@ -20,6 +20,6 @@ const generateShips = () => {
 
 export default () => {
   generateShips();
-  draggableEvents.init();
+  draggableEvents();
   dropableEvents();
 };

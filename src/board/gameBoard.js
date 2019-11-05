@@ -34,6 +34,7 @@ export default (() => {
     positions.forEach(element => {
       playerPositions.push(element);
     });
+    checkIfFilledPositions();
   };
 
   const removePlayerPositions = (positions) => {
@@ -54,6 +55,7 @@ export default (() => {
   const removeShipPositions = (id, positions) => {
     for (let i = 0; i < playerShips.length; i +=1 ) {
       if (playerShips[i].getID() === id) {
+        checkIfFilledPositions();
         playerShips[i].removePositions(positions);
         break;
       }
@@ -66,10 +68,12 @@ export default (() => {
     });
     playerPositions = [];
     playerShips = [];
+    checkIfFilledPositions();
   };
 
   const removeLastPlayerPosition = () => {
     playerPositions.pop();
+    checkIfFilledPositions();
   };
 
   const hasPlayerPosition = (element) => playerPositions.includes(element);
@@ -92,6 +96,14 @@ export default (() => {
     }
     return false;
   }
+
+  const checkIfFilledPositions = () => {
+    if (playerPositions.length === 20) {
+      document.getElementById('btn-game-start').disabled = false;
+    } else {
+      document.getElementById('btn-game-start').disabled = true;
+    }
+  };
 
   return { 
     getPlayerPositions, 
