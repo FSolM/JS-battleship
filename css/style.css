@@ -1,13 +1,25 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
 .set-hidden {
   display: none !important;
 }
 
+.downgrade {
+  z-index: -1 !important;
+}
+
 .full-size {
   width: 100vw !important;
+}
+
+.pointer:hover {
+  cursor: pointer !important;
+}
+
+.hit {
+  background-color: red !important;
+}
+
+.missed {
+  background-color: blue !important;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -203,6 +215,6 @@ table {
 .dropped {
   position: absolute;
   z-index: 10;
-  background-color: blue;
+  background-color: grey;
 }
 /*# sourceMappingURL=style.css.map */

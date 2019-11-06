@@ -1,11 +1,18 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+// Classes Override
 
 .set-hidden { display: none!important; }
 
+.downgrade { z-index: -1!important; }
+
 .full-size { width: 100vw!important; }
+
+.pointer:hover { cursor: pointer!important; }
+
+.hit { background-color: red!important; }
+
+.missed { background-color: blue!important; }
+
+// Classes Override
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -180,5 +187,5 @@ $width_cell: 40px;
 .dropped{
   position: absolute;
   z-index: 10;
-  background-color: blue;
+  background-color: grey;
 }
