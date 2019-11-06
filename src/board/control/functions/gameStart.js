@@ -1,4 +1,11 @@
 import event from '../../../events';
+import boardRender from '../../boardRender';
+
+const hideElements = () => {
+  document.getElementById('user-options').classList.add('set-hidden');
+  document.getElementById('ships').classList.add('set-hidden');
+  document.getElementsByClassName('container')[0].classList.remove('full-size');
+};
 
 const removeEventListeners = () => {
   const ships = document.querySelectorAll('*[class^="ship"]');
@@ -9,7 +16,6 @@ const removeEventListeners = () => {
     cell.removeEventListener('dragleave', event.dragLeave);
     cell.removeEventListener('drop', event.drop);
   });
-
   ships.forEach((ship) => {
     ship.draggable = false;
     ship.removeEventListener('dragstart', event.dragStart, false);
@@ -19,6 +25,7 @@ const removeEventListeners = () => {
 };
 
 export default () => {
-  console.log('Game Started');
   removeEventListeners();
+  hideElements();
+  boardRender('b-board');
 };

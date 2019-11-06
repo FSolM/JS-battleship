@@ -12,9 +12,9 @@ const getBorderClass = (row, col, grid) => {
   }
 }
 
-const generateBoard = () => {
-  const board = document.getElementById('board');
-  board.innerHTML = '';
+const generateBoard = (board = 'board') => {
+  const target = document.getElementById(board);
+  target.innerHTML = '';
   const letters = ['a','b','c','d','e','f','g','h','i','j'];
   for (let i = 0; i < 10; i += 1) {
     let row = `<div id="cells-${i + 1}" class="cells">`;
@@ -22,10 +22,10 @@ const generateBoard = () => {
       row += `<div id="cell-${i + 1}-${letters[j]}" class="cell ${getBorderClass(i, j, 10)}"></div>`
     }
     row += "</div>"
-    board.innerHTML += row;
+    target.innerHTML += row;
   }
 }
 
-export default () => {
-  generateBoard();
+export default (board) => {
+  generateBoard(board);
 };
