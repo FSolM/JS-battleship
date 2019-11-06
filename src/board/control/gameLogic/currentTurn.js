@@ -1,13 +1,42 @@
-// Receives currentPlayer
-// Check who's the currentPlayer
-// -> If currentPlayer === player
-// -> Lets player make move
-// else
-// -> Calls AI's makeMove
+import gameBoard from '../../gameBoard';
+import checkPositions from './checkPositions';
+import makeMove from '../AI/makeMove';
 
-// Calls check positions
-// Receives array of checkPosition
-// If checkPosition[1], game over
-// -> Calls renderGameOver, sends currentPlayer
-// Else if checkPosition[0], loops and doesn't change the currentPlayer
-// Else, loops and changes currentPlayer to the other player
+const getTarget = (player) => {
+  if (!player) {
+    return document.getElementById('board');
+  }
+  return document.getElementById('b-board');
+}
+
+const getCell = (id, player) => {
+  const target = getTarget(player);
+  for (let i = 0; i < target.children.length; i += 1) {
+    for (let j = 0; j < target.children[i].children.length; j += 1) {
+      if (target.children[i].children[j].id === id) {
+        return target.children[i].children[j];
+      }
+    }
+  }
+  return undefined;
+};
+
+export default (player, position) => {
+  const cell = position.replace('cell-', '');
+  const positions = gameBoard.getPositions(!player);
+  if (positions.includes(cell)) {
+    getCell(position, player).classList.add('hit');
+    if (checkPositions(cell, player)) {
+      console.log('Game Over');
+      // Render Game Over
+    }
+    if (!player) {
+      makeMove();
+    }
+  } else {
+    getCell(position, player).classList.add('missed');
+    if (player) {
+      makeMove();
+    }
+  }
+};
