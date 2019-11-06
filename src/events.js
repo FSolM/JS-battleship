@@ -74,7 +74,7 @@ export default (() => {
     const positions = [position, ...getPositions(cell.id, node.className, size)];
     const newPositions = gameBoard.addShipPositions(ship_id, positions);
     if (newPositions) {
-      gameBoard.addPlayerPositions(newPositions);
+      gameBoard.addPositions(newPositions);
     }
   };
 
@@ -89,7 +89,7 @@ export default (() => {
     const child = document.getElementById(id);
     const removedPositions = gameBoard.resetShipPositions(id);
     if (removedPositions) {
-      gameBoard.removePlayerPositions(removedPositions);
+      gameBoard.removePositions(removedPositions);
     }
     e.target.appendChild(child);
     setPositions(e.target, child, id);
@@ -165,8 +165,8 @@ export default (() => {
     }
     if (!gameBoard.isInvalidPosition(newPositions, e.target.id)) {
       const previousShipPositions = currentShip.overridePositions(newPositions);
-      gameBoard.removePlayerPositions(previousShipPositions);
-      gameBoard.addPlayerPositions(newPositions);
+      gameBoard.removePositions(previousShipPositions);
+      gameBoard.addPositions(newPositions);
       changeStyleOrientation(e);
     }
   };

@@ -1,96 +1,134 @@
 export default (() => {
-  let playerPositions = []
+  let playerPositions = [];
   let playerShips = [];
+  let IAPositions = [];
+  let IAShips = []
 
-  const getPlayerPositions = () => playerPositions;
+  const getPositions = (player = true) => {
+    if (player){
+      return playerPositions
+    } else {
+      return IAPositions
+    }
+  };
 
-  const getShip = (id) => {
-    for (let i = 0; i < playerShips.length; i += 1) {
-      if (playerShips[i].getID() === id ){
-        return playerShips[i];
+  const getShip = (id, player = true) => {
+    const ships = player ? playerShips : IAShips;
+    for (let i = 0; i < ships.length; i += 1) {
+      if (ships[i].getID() === id ){
+        return ships[i];
       }
     }
     return undefined;
   };
 
-  const addPlayerShip = (ship) => {
-    playerShips.push(ship);
+  const addShip = (ship, player = true) => {
+    player ? playerShips.push(ship) : IAShips.push(ship);
   };
 
-  const addShipPositions = (id, positions) => {
-    for (let i = 0; i < playerShips.length; i += 1) {
-      if (playerShips[i].getID() === id) {
-        positions.forEach((position) => {
-          playerShips[i].addPosition(position);
-        });
-        return playerShips[i].getPositions();
+  const findShip = (id, ships) => {
+    for (let i = 0; i < ships.length; i += 1) {
+      if (ships[i].getID() === id) {
+        return ships[i]
       }
+    }
+    return undefined;
+  };
+
+  const addShipPositions = (id, positions, player = true) => {
+    const ship = player ? findShip(id, playerShips) : findShip(id, IAShips);
+    positions.forEach((position) => {
+      ship.addPosition(position);
+    });
+    return ship.getPositions();
+  };
+
+  const addPosition = (position, player = true) => player ? playerPositions.push(position) : IAPositions.push(position);
+
+  const addPositions = (positions, player = true) => {
+    if (player) {
+      positions.forEach(element => {
+        playerPositions.push(element);
+      });
+      checkIfFilledPositions()
+    } else {
+      positions.forEach(element => {
+        IAPositions.push(element);
+      });
     }
   };
 
-  const addPlayerPosition = position => playerPositions.push(position);
-
-  const addPlayerPositions = (positions) => {
-    positions.forEach(element => {
-      playerPositions.push(element);
-    });
-    checkIfFilledPositions();
-  };
-
-  const removePlayerPositions = (positions) => {
-    positions.forEach(element => {
-      const idx = playerPositions.indexOf(element);
-      playerPositions.splice(idx, 1);
-    });
-  };
-
-  const resetShipPositions = (id) => {
-    for (let i = 0; i < playerShips.length; i += 1) {
-      if (playerShips[i].getID() === id) {
-        return playerShips[i].resetPositions();
-      }
+  const removePositions = (positions, player = true) => {
+    if (player) {
+      positions.forEach(element => {
+        const idx = playerPositions.indexOf(element);
+        playerPositions.splice(idx, 1);
+      });
+    } else {
+      positions.forEach(element => {
+        const idx = IAPositions.indexOf(element);
+        IAPositions.splice(idx, 1);
+      });
     }
   };
 
-  const removeShipPositions = (id, positions) => {
-    for (let i = 0; i < playerShips.length; i +=1 ) {
-      if (playerShips[i].getID() === id) {
-        checkIfFilledPositions();
-        playerShips[i].removePositions(positions);
-        break;
-      }
+  const resetShipPositions = (id, player = true) => {
+    let ship = player ? findShip(id, playerShips) : findShip(id, IAShips);
+    return ship.resetPositions();
+  };
+
+  const removeShipPositions = (id, positions, player = true) => {
+    let ship = player ? findShip(id, playerShips) : findShip(id, IAShips);
+    checkIfFilledPositions();
+    return ship.removePositions(positions);
+  };
+
+  const removeAllShipsPositions = (player = true) => {
+    if (player) {
+      playerShips.forEach((ship) => {
+        ship.resetPositions();
+      });
+      playerShips = []; 
+      playerPositions = [];
+    } else {
+      IAShips.forEach((ship) => {
+        ship.resetPositions();
+      });
+      IAShips = []; 
+      IAPositions = [];
     }
-  };
-
-  const removeAllShipsPositions = () => {
-    playerShips.forEach((ship) => {
-      ship.resetPositions();
-    });
-    playerPositions = [];
-    playerShips = [];
+    
     checkIfFilledPositions();
   };
 
-  const removeLastPlayerPosition = () => {
-    playerPositions.pop();
+  const removeLastPosition = (player = true) => {
+    if (player){
+      playerPositions.pop();
+    } else {
+      IAPositions.pop();
+    }
     checkIfFilledPositions();
   };
 
-  const hasPlayerPosition = (element) => playerPositions.includes(element);
+  const hasPosition = (element, player = true) => player ? playerPositions.includes(element) : IAPositions.includes(element);
 
-  const hasPlayerPositions = (positions) => {
+  const hasPositions = (positions, player = true ) => {
+    const currentPositions = player ? playerPositions : IAPositions;
     for (let i = 0; i < positions.length; i += 1) {
-      if (playerPositions.includes(positions[i])) {
+      if (currentPositions.includes(positions[i])) {
         return true;
       }
     }
     return false;
   };
 
-  const isInvalidPosition = (positions, id) => {
-    const currentShipPositions = getShip(id).getPositions();
+  const isInvalidPosition = (positions, id, player = true) => {
+
+    let ship = player ? findShip(id, playerShips) : findShip(id, IAShips);
+    const currentPositions = player ? playerPositions : IAPositions;
+    const currentShipPositions = ship.getPositions();
     for (let i = 0; i < positions.length; i += 1) {
-      if (playerPositions.includes(positions[i]) && !(currentShipPositions.includes(positions[i]))) {
+      if (currentPositions.includes(positions[i]) && !(currentShipPositions.includes(positions[i]))) {
         return true;
       }
     }
@@ -106,19 +144,19 @@ export default (() => {
   };
 
   return { 
-    getPlayerPositions, 
-    addPlayerPositions, 
-    addPlayerPosition,
-    addPlayerShip,
+    getPositions, 
+    addPositions, 
+    addPosition,
+    addShip,
     getShip,
     addShipPositions,
     isInvalidPosition,
     removeAllShipsPositions,
-    removePlayerPositions, 
+    removePositions, 
     removeShipPositions,
     resetShipPositions,
-    hasPlayerPosition, 
-    removeLastPlayerPosition,
-    hasPlayerPositions,
+    hasPosition, 
+    removeLastPosition,
+    hasPositions,
   };
 })();
