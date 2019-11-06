@@ -1,5 +1,6 @@
 import event from '../../../events';
 import boardRender from '../../boardRender';
+import randomizePositions from './randomizePositions';
 
 const hideElements = () => {
   document.getElementById('user-options').classList.add('set-hidden');
@@ -28,4 +29,5 @@ export default () => {
   removeEventListeners();
   hideElements();
   boardRender('b-board');
+  randomizePositions(false);
 };

@@ -27,6 +27,7 @@ const checkPositions = (positions) => {
 
 const savePosition = (id, position, orientation) => {
   usedPositions.push([id, [...position], orientation]);
+  console.log(usedPositions);
 };
 
 const setPositionArray = (pivot, size, orientation) => {
@@ -68,14 +69,13 @@ const setPositions = () => {
       }
     }
   });
-
 };
 
-const sendData = () => {
+const sendData = (player) => {
   for (let i = 0; i < usedPositions.length; i += 1) {
-    gameBoard.addShip(ship(usedPositions[i][0], usedPositions[i][0].split('-')[0], usedPositions[i][1].length));
-    gameBoard.addShipPositions(usedPositions[i][0], usedPositions[i][1]);
-    gameBoard.addPositions(usedPositions[i][1]);
+    gameBoard.addShip(ship(usedPositions[i][0], usedPositions[i][0].split('-')[0], usedPositions[i][1].length), player);
+    gameBoard.addShipPositions(usedPositions[i][0], usedPositions[i][1], player);
+    gameBoard.addPositions(usedPositions[i][1], player);
   }
 };
 
@@ -95,9 +95,15 @@ const resetPositions = () => {
   usedPositions = [];
 };
 
-export default () => {
-  resetPositions();
-  setPositions();
-  sendData();
-  renderPositions();
+export default (player = true) => {
+  if (player) {
+    resetPositions();
+    setPositions();
+    sendData(player);
+    renderPositions();
+  } else {
+    setPositions();
+    sendData(player)
+  }
+  usedPositions = [];
 };
