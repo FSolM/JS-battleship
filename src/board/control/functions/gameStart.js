@@ -30,4 +30,5 @@ export default () => {
   hideElements();
   boardRender('b-board');
   randomizePositions(false);
+  // Calls gameInit
 };
