@@ -4,7 +4,7 @@ import gameBoard from '../../gameBoard';
 import ships from '../../../ships/generateShips';
 import ship from '../../../ships/ship';
 
-const letters = 'abcdefghij'.split('')
+const letters = 'abcdefghij'.split('');
 let usedPositions = [];
 
 const checkPositions = (positions) => {
@@ -27,7 +27,6 @@ const checkPositions = (positions) => {
 
 const savePosition = (id, position, orientation) => {
   usedPositions.push([id, [...position], orientation]);
-  console.log(usedPositions);
 };
 
 const setPositionArray = (pivot, size, orientation) => {

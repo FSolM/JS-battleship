@@ -58,6 +58,14 @@ export default (() => {
     }
   };
 
+  const removePosition = (position, player = true) => {
+    if (player) {
+      playerPositions.splice(playerPositions.indexOf(position), 1);
+    } else {
+      IAPositions.splice(IAPositions.indexOf(position), 1);
+    }
+  };
+
   const removePositions = (positions, player = true) => {
     if (player) {
       positions.forEach(element => {
@@ -97,12 +105,11 @@ export default (() => {
       IAShips = []; 
       IAPositions = [];
     }
-    
     checkIfFilledPositions();
   };
 
   const removeLastPosition = (player = true) => {
-    if (player){
+    if (player) {
       playerPositions.pop();
     } else {
       IAPositions.pop();
@@ -123,7 +130,6 @@ export default (() => {
   };
 
   const isInvalidPosition = (positions, id, player = true) => {
-
     let ship = player ? findShip(id, playerShips) : findShip(id, IAShips);
     const currentPositions = player ? playerPositions : IAPositions;
     const currentShipPositions = ship.getPositions();
@@ -151,6 +157,7 @@ export default (() => {
     getShip,
     addShipPositions,
     isInvalidPosition,
+    removePosition,
     removeAllShipsPositions,
     removePositions, 
     removeShipPositions,
