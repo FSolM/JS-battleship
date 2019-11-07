@@ -1,5 +1,6 @@
 // Classes Override
 
+
 .set-hidden { display: none!important; }
 
 .downgrade { z-index: -1!important; }
@@ -60,6 +61,10 @@ table {
 }
 
 *{ box-sizing: border-box; }
+
+*, body{
+  font-family: 'Roboto Condensed', sans-serif;
+}
 
 $width_cell: 40px;
 
@@ -188,4 +193,42 @@ $width_cell: 40px;
   position: absolute;
   z-index: 10;
   background-color: grey;
+}
+
+.winner{
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 40px;
+  z-index: 10;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid gray;
+  padding: 0 58px;
+  padding-top: 50px;
+  border-radius: 10px;
+}
+
+#restart{
+  display: block;
+  margin: 40px auto;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgb(190, 190, 190);
+  background-color: white;
+  color: black;
+  &:hover{
+    color:white;
+    background-color: black;
+    cursor: pointer;
+  }
+}
+
+.title{
+  font-size: 60px;
+  position: absolute;
+  padding: 30px;
 }

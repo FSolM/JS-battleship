@@ -1,6 +1,7 @@
 import gameBoard from '../../gameBoard';
 import checkPositions from './checkPositions';
 import makeMove from '../AI/makeMove';
+import gameOverRender from './gameOverRender'
 
 const getTarget = (player) => {
   if (!player) {
@@ -29,14 +30,15 @@ export default (player, position) => {
     if (checkPositions(cell, player)) {
       console.log('Game Over');
       // Render Game Over
+      gameOverRender(player);
     }
     if (!player) {
-      makeMove();
+      makeMove.play();
     }
   } else {
     getCell(position, player).classList.add('missed');
     if (player) {
-      makeMove();
+      makeMove.play();
     }
   }
 };

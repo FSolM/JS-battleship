@@ -39,5 +39,5 @@ export default () => {
   downgrade();
   boardRender('b-board');
   randomizePositions(false);
-  gameInit();
+  gameInit.init();
 };

@@ -1,3 +1,5 @@
+import { isAbsolute } from "path";
+
 export default (() => {
   let playerPositions = [];
   let playerShips = [];
@@ -11,6 +13,13 @@ export default (() => {
       return IAPositions
     }
   };
+
+  const reinitialize = () => {
+    playerPositions = []
+    playerShips = []
+    IAPositions = []
+    IAShips = [] 
+  }
 
   const getShip = (id, player = true) => {
     const ships = player ? playerShips : IAShips;
@@ -165,5 +174,6 @@ export default (() => {
     hasPosition, 
     removeLastPosition,
     hasPositions,
+    reinitialize
   };
 })();

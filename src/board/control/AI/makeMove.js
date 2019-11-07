@@ -1,25 +1,37 @@
 import currentTurn from '../gameLogic/currentTurn';
 
-let movements = [];
-const letters = 'abcdefghij'.split('');
 
-const getCol = () => Math.floor((Math.random() * 10) + 1);
 
-const getRow = () => letters[Math.floor(Math.random() * 10)];
+export default (() => {
+  
+  let movements = [];
+  const letters = 'abcdefghij'.split('');
 
-const getMovement = () => {
-  let movement = '';
-  do {
-    movement = `cell-${getCol()}-${getRow()}`
+  const getCol = () => Math.floor((Math.random() * 10) + 1);
+
+  const getRow = () => letters[Math.floor(Math.random() * 10)];
+
+  const getMovement = () => {
+    let movement = '';
+    do {
+      movement = `cell-${getCol()}-${getRow()}`
+    }
+    while (movements.includes(movement))
+    console.log(`Movement: ${movement}`);
+    return movement;
+  };
+
+  const play = () => {
+    const movement = getMovement();
+    movements.push(movement);
+    console.log(movements);
+    currentTurn(false, movement);
   }
-  while (movements.includes(movement))
-  console.log(`Movement: ${movement}`);
-  return movement;
-};
+  
+  const restartMovements = () => {
+    movements = []
+  }
+  
 
-export default () => {
-  const movement = getMovement();
-  movements.push(movement);
-  console.log(movements);
-  currentTurn(false, movement);
-};
+  return { play, restartMovements }
+})();
