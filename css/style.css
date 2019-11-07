@@ -80,6 +80,10 @@ table {
           box-sizing: border-box;
 }
 
+*, body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 .container {
   width: 50%;
   height: 100vh;
@@ -216,5 +220,45 @@ table {
   position: absolute;
   z-index: 10;
   background-color: grey;
+}
+
+.winner {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 40px;
+  z-index: 10;
+  font-weight: bold;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid gray;
+  padding: 0 58px;
+  padding-top: 50px;
+  border-radius: 10px;
+}
+
+#restart {
+  display: block;
+  margin: 40px auto;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #bebebe;
+  background-color: white;
+  color: black;
+}
+
+#restart:hover {
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 60px;
+  position: absolute;
+  padding: 30px;
 }
 /*# sourceMappingURL=style.css.map */
