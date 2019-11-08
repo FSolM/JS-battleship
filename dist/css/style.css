@@ -15,11 +15,11 @@
 }
 
 .hit {
-  background-color: red !important;
+  background-color: #D11149 !important;
 }
 
 .missed {
-  background-color: blue !important;
+  background-color: #6610F2 !important;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -82,6 +82,19 @@ table {
 
 *, body {
   font-family: 'Roboto Condensed', sans-serif;
+  color: #003049;
+}
+
+.board-letters {
+  width: 40px;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.letters-index {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 
 .container {
@@ -101,25 +114,25 @@ table {
 [id*=battleship] {
   width: 160px;
   height: 40px;
-  border: 0.5px solid gray;
+  border: 0.5px solid #C1CAD6;
 }
 
 [id*=cruiser] {
-  border: 0.5px solid gray;
+  border: 0.5px solid #C1CAD6;
 }
 
 [id*=destroyer] {
-  border: 0.5px solid gray;
+  border: 0.5px solid #C1CAD6;
 }
 
 [id*=submarine] {
-  border: 0.5px solid gray;
+  border: 0.5px solid #C1CAD6;
 }
 
 [id*=rectangle] {
   width: 80px;
   height: 40px;
-  border: 0.5px solid gray;
+  border: 0.5px solid #6A8E7F;
 }
 
 .horizontal-battleship {
@@ -169,27 +182,27 @@ table {
 }
 
 .inner-border {
-  border-top: 1px solid black;
-  border-right: 1px solid black;
+  border-top: 1px solid #C1CAD6;
+  border-right: 1px solid #C1CAD6;
 }
 
 .first-border {
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-top: 1px solid #C1CAD6;
+  border-left: 1px solid #C1CAD6;
+  border-right: 1px solid #C1CAD6;
 }
 
 .bottom-right-border {
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid #C1CAD6;
+  border-left: 1px solid #C1CAD6;
+  border-right: 1px solid #C1CAD6;
+  border-bottom: 1px solid #C1CAD6;
 }
 
 .last-row-inner-border {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
+  border-top: 1px solid #C1CAD6;
+  border-bottom: 1px solid #C1CAD6;
+  border-right: 1px solid #C1CAD6;
 }
 
 #board {
@@ -219,7 +232,7 @@ table {
 .dropped {
   position: absolute;
   z-index: 10;
-  background-color: grey;
+  background-color: #D0CFEC;
 }
 
 .winner {
@@ -260,5 +273,58 @@ table {
   font-size: 60px;
   position: absolute;
   padding: 30px;
+}
+
+#btn-randomize {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #bebebe;
+  cursor: pointer;
+}
+
+#btn-randomize:hover {
+  background-color: #FF3366;
+  color: #A9FFCB;
+}
+
+#btn-game-start {
+  padding: 10px 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #bebebe;
+  background-color: #A9FFCB;
+}
+
+#btn-game-start:hover {
+  background-color: #210B2C;
+  color: #A9FFCB;
+}
+
+#btn-game-start:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.number-index {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.number-index-item {
+  height: 40px;
+  padding-top: 10px;
+}
+
+.number-index-item-special {
+  height: 21px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -9,9 +9,9 @@
 
 .pointer:hover { cursor: pointer!important; }
 
-.hit { background-color: red!important; }
+.hit { background-color: #D11149!important; }
 
-.missed { background-color: blue!important; }
+.missed { background-color: #6610F2!important; }
 
 // Classes Override
 
@@ -64,9 +64,20 @@ table {
 
 *, body{
   font-family: 'Roboto Condensed', sans-serif;
+  color: #003049;
 }
 
 $width_cell: 40px;
+
+.board-letters{
+  width: $width_cell;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.letters-index{
+  display: flex !important;
+}
 
 .container{
   width: 50%;
@@ -76,29 +87,31 @@ $width_cell: 40px;
   align-items: center;
 }
 
+$gray-border: #C1CAD6;
+
 [id*=battleship] {
   width: 160px ;
   height: $width_cell;
-  border: 0.5px solid gray;
+  border: 0.5px solid $gray-border;
 }
 
 [id*=cruiser] {
-  border: 0.5px solid gray;
+  border: 0.5px solid $gray-border;
 }
 
 [id*=destroyer] {
-  border: 0.5px solid gray;
+  border: 0.5px solid $gray-border;
 }
 
 [id*=submarine] {
   
-  border: 0.5px solid gray;
+  border: 0.5px solid $gray-border;
 }
 
 [id*=rectangle] {
   width: 80px ;
   height: $width_cell;
-  border: 0.5px solid gray;
+  border: 0.5px solid #6A8E7F;
 }
 
 .horizontal{
@@ -147,27 +160,27 @@ $width_cell: 40px;
 }
 
 .inner-border{
-  border-top: 1px solid black;
-  border-right: 1px solid black;
+  border-top: 1px solid $gray-border;
+  border-right: 1px solid $gray-border;
 }
 
 .first-border{
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-top: 1px solid $gray-border;
+  border-left: 1px solid $gray-border;
+  border-right: 1px solid $gray-border;
 }
 
 .bottom-right-border{
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid $gray-border;
+  border-left: 1px solid $gray-border;
+  border-right: 1px solid $gray-border;
+  border-bottom: 1px solid $gray-border;
 }
 
 .last-row-inner-border{
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
+  border-top: 1px solid $gray-border;
+  border-bottom: 1px solid $gray-border;
+  border-right: 1px solid $gray-border;
 }
 
 #board{
@@ -192,7 +205,7 @@ $width_cell: 40px;
 .dropped{
   position: absolute;
   z-index: 10;
-  background-color: grey;
+  background-color: #D0CFEC;
 }
 
 .winner{
@@ -231,4 +244,45 @@ $width_cell: 40px;
   font-size: 60px;
   position: absolute;
   padding: 30px;
+}
+
+#btn-randomize{
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(190, 190, 190);
+  cursor: pointer;
+  &:hover{
+    background-color: #FF3366;
+    color: #A9FFCB;
+  }
+}
+
+#btn-game-start{
+  padding: 10px 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(190, 190, 190);
+  background-color: #A9FFCB;
+  &:hover{
+    background-color:#210B2C;
+    color: #A9FFCB;
+  }
+  &:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.number-index{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  &-item{
+    height: 40px;
+    padding-top: 10px;
+    &-special{
+      height: 21px;
+    }
+  }
 }

@@ -10,7 +10,7 @@ export default (() => {
   
   const addClickListeners = () => {
     const target = document.getElementById('b-board');
-    for (let i = 0; i < target.children.length; i += 1) {
+    for (let i = 1; i < target.children.length; i += 1) {
       for (let j = 0; j < target.children[i].children.length; j += 1) {
         target.children[i].children[j].classList.add('pointer');
         target.children[i].children[j].addEventListener('click', eventFunction);
