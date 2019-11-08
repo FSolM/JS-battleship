@@ -180,5 +180,8 @@ export default (() => {
     dragEnd,
     rotate,
     getDragged,
+    getPositions,
+    splitClasses,
+    getSize,
   };
 })();

@@ -1,4 +1,4 @@
-const getBorderClass = (row, col, grid) => {
+export const getBorderClass = (row, col, grid) => {
   if ((row >= 0 && row < grid - 1) && col === 0) {
     return 'first-border';
   } else

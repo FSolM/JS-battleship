@@ -27,7 +27,7 @@ export default (id, type, size) => {
     return previousPositions;
   };
 
-  const hit = (position, player) => {
+  const hit = (position, player = true) => {
     hitPositions.push(position);
 
     if (isSunk()){
