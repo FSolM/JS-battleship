@@ -18,6 +18,58 @@
   background-color: #D11149 !important;
 }
 
+.sunk {
+  text-align: center;
+  font-size: 20px;
+  line-height: 39px;
+}
+
+.sunk::after {
+  content: "X";
+  color: white;
+}
+
+.sunk-square {
+  border-top: 2px solid #8D99AE !important;
+  border-left: 2px solid #8D99AE !important;
+  border-bottom: 2px solid #8D99AE !important;
+  border-right: 2px solid #8D99AE !important;
+}
+
+.sunk-h-first {
+  border-top: 2px solid #8D99AE !important;
+  border-left: 2px solid #8D99AE !important;
+  border-bottom: 2px solid #8D99AE !important;
+}
+
+.sunk-h-last {
+  border-top: 2px solid #8D99AE !important;
+  border-right: 2px solid #8D99AE !important;
+  border-bottom: 2px solid #8D99AE !important;
+}
+
+.sunk-h-inner {
+  border-bottom: 2px solid #8D99AE !important;
+  border-top: 2px solid #8D99AE !important;
+}
+
+.sunk-v-first {
+  border-right: 2px solid #8D99AE !important;
+  border-left: 2px solid #8D99AE !important;
+  border-top: 2px solid #8D99AE !important;
+}
+
+.sunk-v-last {
+  border-bottom: 2px solid #8D99AE !important;
+  border-right: 2px solid #8D99AE !important;
+  border-left: 2px solid #8D99AE !important;
+}
+
+.sunk-v-inner {
+  border-left: 2px solid #8D99AE !important;
+  border-right: 2px solid #8D99AE !important;
+}
+
 .missed {
   background-color: #6610F2 !important;
 }

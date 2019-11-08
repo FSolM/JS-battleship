@@ -9,7 +9,63 @@
 
 .pointer:hover { cursor: pointer!important; }
 
-.hit { background-color: #D11149!important; }
+.hit { 
+  background-color: #D11149!important; 
+}
+
+.sunk {
+  text-align: center;
+  font-size: 20px;
+  line-height: 39px;
+  &::after{
+    content: "X"; 
+    color: white;
+  }
+}
+
+$border-sunk-prop: 2px solid #8D99AE !important;
+
+.sunk-square{
+  border-top: $border-sunk-prop;
+  border-left: $border-sunk-prop;
+  border-bottom: $border-sunk-prop;
+  border-right: $border-sunk-prop;
+}
+
+
+.sunk-h-first{
+  border-top: $border-sunk-prop;
+  border-left: $border-sunk-prop;
+  border-bottom: $border-sunk-prop;
+}
+
+.sunk-h-last{
+  border-top: $border-sunk-prop;
+  border-right: $border-sunk-prop;
+  border-bottom: $border-sunk-prop;
+}
+
+.sunk-h-inner{
+  border-bottom: $border-sunk-prop;
+  border-top: $border-sunk-prop;
+}
+
+.sunk-v-first{
+  border-right: $border-sunk-prop;
+  border-left: $border-sunk-prop;
+  border-top: $border-sunk-prop;
+}
+
+.sunk-v-last{
+  border-bottom: $border-sunk-prop;
+  border-right: $border-sunk-prop;
+  border-left: $border-sunk-prop;
+}
+
+.sunk-v-inner{
+  border-left: $border-sunk-prop;
+  border-right: $border-sunk-prop;
+}
 
 .missed { background-color: #6610F2!important; }
 
