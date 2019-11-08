@@ -11,7 +11,7 @@ const generateShips = () => {
     const quantity = current_ship.quantity;
     for (let i = 0; i < quantity; i += 1) {
       const newShip = ship(`${current_ship.name}-${i}`, current_ship.name, current_ship.size);
-      gameBoard.addPlayerShip(newShip);
+      gameBoard.addShip(newShip);
       shipsHtml += `<div id="${current_ship.name}-${i}" class="ship-${current_ship.name}-${i} horizontal-${current_ship.name}" draggable="true"></div>`
     }
   });

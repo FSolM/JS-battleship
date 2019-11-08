@@ -1,5 +1,14 @@
 import event from '../../../events';
 import boardRender from '../../boardRender';
+import randomizePositions from './randomizePositions';
+import gameInit from '../gameLogic/gameInit';
+
+const downgrade = () => {
+  const cells = document.getElementsByClassName('dropped');
+  for (let i = 0; i < cells.length; i += 1) {
+    cells[i].classList.add('downgrade');
+  }
+};
 
 const hideElements = () => {
   document.getElementById('user-options').classList.add('set-hidden');
@@ -27,5 +36,8 @@ const removeEventListeners = () => {
 export default () => {
   removeEventListeners();
   hideElements();
+  downgrade();
   boardRender('b-board');
+  randomizePositions(false);
+  gameInit.init();
 };
