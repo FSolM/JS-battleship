@@ -54,6 +54,14 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 1088px) {
+  body {
+    width: 80%;
+  }
 }
 
 ol, ul {
@@ -103,9 +111,9 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -173,6 +181,10 @@ table {
 .vertical-submarine {
   height: 40px;
   width: 40px;
+}
+
+#ships {
+  margin: 0 5px;
 }
 
 .cell {
@@ -317,6 +329,7 @@ table {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  margin-right: 5px;
 }
 
 .number-index-item {
