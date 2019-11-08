@@ -36,7 +36,7 @@ const generateBoard = (board = 'board') => {
   for (let i = 0; i < 10; i += 1) {
     let row = `<div id="cells-${i + 1}" class="cells">`;
     for (let j = 0; j < 10; j += 1) {
-      row += `<div id="cell-${i + 1}-${letters[j]}" class="cell ${getBorderClass(i, j, 10)}"></div>`
+      row += `<div id="cell-${i + 1}-${letters[j]}" class="cell ${getBorderClass(i, j, 10)} ${i + 1}-${letters[j]}"></div>`
     }
     row += "</div>"
     target.innerHTML += row;

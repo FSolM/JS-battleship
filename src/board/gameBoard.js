@@ -1,5 +1,3 @@
-import { isAbsolute } from "path";
-
 export default (() => {
   let playerPositions = [];
   let playerShips = [];
@@ -13,6 +11,14 @@ export default (() => {
       return IAPositions
     }
   };
+
+  const getShips = (player = true) => {
+    if (player){
+      return playerShips;
+    } else {
+      return IAPositions
+    }
+  }
 
   const reinitialize = () => {
     playerPositions = []
@@ -30,6 +36,15 @@ export default (() => {
     }
     return undefined;
   };
+
+  const hitShipByCell = (cell, player = true) => {
+    const ships = player ? playerShips : IAShips;
+    for (let i = 0; i < ships.length; i += 1) {
+      if (ships[i].getPositions().includes(cell)){
+        return ships[i].hit(cell, player); 
+      }
+    }
+  }
 
   const addShip = (ship, player = true) => {
     player ? playerShips.push(ship) : IAShips.push(ship);
@@ -164,6 +179,7 @@ export default (() => {
     addPosition,
     addShip,
     getShip,
+    getShips,
     addShipPositions,
     isInvalidPosition,
     removePosition,
@@ -174,6 +190,7 @@ export default (() => {
     hasPosition, 
     removeLastPosition,
     hasPositions,
-    reinitialize
+    reinitialize,
+    hitShipByCell,
   };
 })();

@@ -17,14 +17,12 @@ export default (() => {
       movement = `cell-${getCol()}-${getRow()}`
     }
     while (movements.includes(movement))
-    console.log(`Movement: ${movement}`);
     return movement;
   };
 
   const play = () => {
     const movement = getMovement();
     movements.push(movement);
-    console.log(movements);
     currentTurn(false, movement);
   }
   

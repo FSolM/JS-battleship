@@ -27,11 +27,19 @@ export default (id, type, size) => {
     return previousPositions;
   };
 
-  const hit = (position) => {
+  const hit = (position, player) => {
     hitPositions.push(position);
+
+    if (isSunk()){
+      return positions;
+    }
+    
+    return false
   };
 
-  const isSunk = () => positions.length === hitPositions.length;
+  const isSunk = () => { 
+    return positions.length === hitPositions.length;
+  };
 
   return {
     getID,

@@ -102,8 +102,7 @@ export default (player = true) => {
     renderPositions();
   } else {
     setPositions();
-    sendData(player)
-    console.log(gameBoard.getPositions(false));
+    sendData(player);
   }
   usedPositions = [];
 };
