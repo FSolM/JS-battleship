@@ -80,6 +80,7 @@ const sunkCells = (player, positions) => {
       break;
     }
     default: {
+      // eslint-disable-next-line no-console
       console.error('Something unexpected happened');
     }
   }
