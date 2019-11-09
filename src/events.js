@@ -22,16 +22,16 @@ export default (() => {
   };
 
   const getSize = (ship_id) => {
-    if (ship_id.match(/battleship/)){
+    if (ship_id.match(/battleship/)) {
       return 4; 
     } else
-    if (ship_id.match(/cruiser/)){
+    if (ship_id.match(/cruiser/)) {
       return 3;
     } else
-    if (ship_id.match(/destroyer/)){
+    if (ship_id.match(/destroyer/)) {
       return 2;
     } else
-    if (ship_id.match(/submarine/)){
+    if (ship_id.match(/submarine/)) {
       return 1;
     }
   };
@@ -98,7 +98,7 @@ export default (() => {
 
   const drop = (e) => {
     e.preventDefault();
-    if (notValidMove(e)){
+    if (notValidMove(e)) {
       return
     } else
     if (/^cell/.test(e.target.id)) {
@@ -109,7 +109,7 @@ export default (() => {
   const dragStart = (e) => {
     e.target.classList.add('drag-start');
     e.dataTransfer.setData('text', e.target.id);
-    setDragged(e.target.id)
+    setDragged(e.target.id);
     setTimeout(() => (e.target.classList.add('invisible')), 0);
   };
 

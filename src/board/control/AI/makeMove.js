@@ -1,9 +1,6 @@
 import currentTurn from '../gameLogic/currentTurn';
 
-
-
 export default (() => {
-  
   let movements = [];
   const letters = 'abcdefghij'.split('');
 
@@ -14,7 +11,7 @@ export default (() => {
   const getMovement = () => {
     let movement = '';
     do {
-      movement = `cell-${getCol()}-${getRow()}`
+      movement = `cell-${getCol()}-${getRow()}`;
     }
     while (movements.includes(movement))
     return movement;
@@ -27,9 +24,8 @@ export default (() => {
   }
   
   const restartMovements = () => {
-    movements = []
+    movements = [];
   }
-  
 
-  return { play, restartMovements }
+  return { play, restartMovements };
 })();

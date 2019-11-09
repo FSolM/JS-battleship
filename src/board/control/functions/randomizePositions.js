@@ -11,14 +11,14 @@ const checkPositions = (positions) => {
   for (let i = 0; i < positions.length; i += 1) {
     const temp = positions[i].split('-');
     if (positions[i].includes('undefined')) {
-      return false
+      return false;
     } else
     if (temp[0] > 10 || temp[1] > 'j') {
-      return false
+      return false;
     }
     for (let j = 0; j < usedPositions.length; j += 1) {
       if (usedPositions[j][1].includes(positions[i])) {
-        return false
+        return false;
       }
     }
   }

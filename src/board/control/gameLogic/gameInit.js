@@ -17,8 +17,10 @@ export default (() => {
       }
     }
   };
+
   const init = () => { 
     addClickListeners();
   };
+  
   return {init, eventFunction}
 })();

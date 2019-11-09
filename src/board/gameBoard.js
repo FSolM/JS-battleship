@@ -2,35 +2,35 @@ export default (() => {
   let playerPositions = [];
   let playerShips = [];
   let IAPositions = [];
-  let IAShips = []
+  let IAShips = [];
 
   const getPositions = (player = true) => {
-    if (player){
-      return playerPositions
+    if (player) {
+      return playerPositions;
     } else {
-      return IAPositions
+      return IAPositions;
     }
   };
 
   const getShips = (player = true) => {
-    if (player){
+    if (player) {
       return playerShips;
     } else {
-      return IAPositions
+      return IAPositions;
     }
-  }
+  };
 
   const reinitialize = () => {
-    playerPositions = []
-    playerShips = []
-    IAPositions = []
-    IAShips = [] 
-  }
+    playerPositions = [];
+    playerShips = [];
+    IAPositions = [];
+    IAShips = [];
+  };
 
   const getShip = (id, player = true) => {
     const ships = player ? playerShips : IAShips;
     for (let i = 0; i < ships.length; i += 1) {
-      if (ships[i].getID() === id ){
+      if (ships[i].getID() === id ) {
         return ships[i];
       }
     }
@@ -40,11 +40,11 @@ export default (() => {
   const hitShipByCell = (cell, player = true) => {
     const ships = player ? playerShips : IAShips;
     for (let i = 0; i < ships.length; i += 1) {
-      if (ships[i].getPositions().includes(cell)){
+      if (ships[i].getPositions().includes(cell)) {
         return ships[i].hit(cell, player); 
       }
     }
-  }
+  };
 
   const addShip = (ship, player = true) => {
     player ? playerShips.push(ship) : IAShips.push(ship);
@@ -53,7 +53,7 @@ export default (() => {
   const findShip = (id, ships) => {
     for (let i = 0; i < ships.length; i += 1) {
       if (ships[i].getID() === id) {
-        return ships[i]
+        return ships[i];
       }
     }
     return undefined;
@@ -74,7 +74,7 @@ export default (() => {
       positions.forEach(element => {
         playerPositions.push(element);
       });
-      checkIfFilledPositions()
+      checkIfFilledPositions();
     } else {
       positions.forEach(element => {
         IAPositions.push(element);
@@ -163,7 +163,7 @@ export default (() => {
       }
     }
     return false;
-  }
+  };
 
   const checkIfFilledPositions = () => {
     if (playerPositions.length === 20) {

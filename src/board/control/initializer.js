@@ -10,11 +10,11 @@ export default () => {
   document.getElementById('ships').classList.remove('set-hidden');
   document.getElementsByClassName('container')[0].classList.add('full-size');
   const bBoard = document.getElementById('b-board');
-  bBoard.innerHTML = "";
+  bBoard.innerHTML = '';
   const bBoardContainer = document.getElementsByClassName('container')[1];
-  bBoardContainer.innerHTML = "";
+  bBoardContainer.innerHTML = '';
   bBoardContainer.appendChild(bBoard);
   document.getElementById('btn-game-start').disabled = true;
   boardRender();
   shipHandling();
-}
+};

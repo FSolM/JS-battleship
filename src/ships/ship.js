@@ -16,7 +16,7 @@ export default (id, type, size) => {
 
   const overridePositions = (newPositions) => {
     const pivot = positions[0];
-    const previousPositions = [...positions].splice(1)
+    const previousPositions = [...positions].splice(1);
     positions = [pivot, ...newPositions];
     return previousPositions;
   };
@@ -27,19 +27,15 @@ export default (id, type, size) => {
     return previousPositions;
   };
 
-  const hit = (position, player = true) => {
+  const hit = (position) => {
     hitPositions.push(position);
-
-    if (isSunk()){
+    if (isSunk()) {
       return positions;
     }
-    
-    return false
+    return false;
   };
 
-  const isSunk = () => { 
-    return positions.length === hitPositions.length;
-  };
+  const isSunk = () => positions.length === hitPositions.length;
 
   return {
     getID,
@@ -51,5 +47,5 @@ export default (id, type, size) => {
     resetPositions,
     hit,
     isSunk,
-  }
-}
+  };
+};
