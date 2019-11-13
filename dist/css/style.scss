@@ -1,0 +1,355 @@
+// Classes Override
+
+
+.set-hidden { display: none!important; }
+
+.downgrade { z-index: -1!important; }
+
+.full-size { width: 100vw!important; }
+
+.pointer:hover { cursor: pointer!important; }
+
+.hit { 
+  background-color: #D11149!important; 
+}
+
+.sunk {
+  text-align: center;
+  font-size: 20px;
+  line-height: 39px;
+  &::after{
+    content: "X"; 
+    color: white;
+  }
+}
+
+$border-sunk-prop: 2px solid #8D99AE !important;
+
+.sunk-square{
+  border-top: $border-sunk-prop;
+  border-left: $border-sunk-prop;
+  border-bottom: $border-sunk-prop;
+  border-right: $border-sunk-prop;
+}
+
+
+.sunk-h-first{
+  border-top: $border-sunk-prop;
+  border-left: $border-sunk-prop;
+  border-bottom: $border-sunk-prop;
+}
+
+.sunk-h-last{
+  border-top: $border-sunk-prop;
+  border-right: $border-sunk-prop;
+  border-bottom: $border-sunk-prop;
+}
+
+.sunk-h-inner{
+  border-bottom: $border-sunk-prop;
+  border-top: $border-sunk-prop;
+}
+
+.sunk-v-first{
+  border-right: $border-sunk-prop;
+  border-left: $border-sunk-prop;
+  border-top: $border-sunk-prop;
+}
+
+.sunk-v-last{
+  border-bottom: $border-sunk-prop;
+  border-right: $border-sunk-prop;
+  border-left: $border-sunk-prop;
+}
+
+.sunk-v-inner{
+  border-left: $border-sunk-prop;
+  border-right: $border-sunk-prop;
+}
+
+.missed { background-color: #6610F2!important; }
+
+// Classes Override
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  line-height: 1;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  @media (min-width: 1088px) {
+    width: 80%;
+  }
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*{ box-sizing: border-box; }
+
+*, body{
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #003049;
+}
+
+$width_cell: 40px;
+
+.board-letters{
+  width: $width_cell;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.letters-index{
+  display: flex !important;
+}
+
+.container{
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+
+$gray-border: #C1CAD6;
+
+[id*=battleship] {
+  width: 160px ;
+  height: $width_cell;
+  border: 0.5px solid $gray-border;
+}
+
+[id*=cruiser] {
+  border: 0.5px solid $gray-border;
+}
+
+[id*=destroyer] {
+  border: 0.5px solid $gray-border;
+}
+
+[id*=submarine] {
+  
+  border: 0.5px solid $gray-border;
+}
+
+[id*=rectangle] {
+  width: 80px ;
+  height: $width_cell;
+  border: 0.5px solid #6A8E7F;
+}
+
+.horizontal{
+  &-battleship{
+    width: 160px ;
+    height: $width_cell;
+  }
+  &-cruiser{
+    width: 120px ;
+    height: $width_cell;
+  }
+  &-destroyer{
+    width: 80px ;
+    height: $width_cell;
+  }
+  &-submarine{
+    width: $width_cell;
+    height: $width_cell;
+  }
+}
+
+.vertical{
+  &-battleship{
+    height: 160px ;
+    width: $width_cell;
+  }
+  &-cruiser{
+    height: 120px ;
+    width: $width_cell;
+  }
+  &-destroyer{
+    height: 80px ;
+    width: $width_cell;
+  }
+  &-submarine{
+    height: $width_cell;
+    width: $width_cell;
+  }
+}
+
+#ships{
+  margin: 0 5px;
+}
+
+.cell{
+  min-width: $width_cell;
+  min-height: $width_cell;
+  position: relative;
+}
+
+.inner-border{
+  border-top: 1px solid $gray-border;
+  border-right: 1px solid $gray-border;
+}
+
+.first-border{
+  border-top: 1px solid $gray-border;
+  border-left: 1px solid $gray-border;
+  border-right: 1px solid $gray-border;
+}
+
+.bottom-right-border{
+  border-top: 1px solid $gray-border;
+  border-left: 1px solid $gray-border;
+  border-right: 1px solid $gray-border;
+  border-bottom: 1px solid $gray-border;
+}
+
+.last-row-inner-border{
+  border-top: 1px solid $gray-border;
+  border-bottom: 1px solid $gray-border;
+  border-right: 1px solid $gray-border;
+}
+
+#board{
+  display: flex;
+  flex-wrap: wrap;
+  width: 420px;
+}
+
+.cells{
+  display: flex;
+}
+
+.drag-start{
+  cursor: move;
+  background-color: brown;
+}
+
+.invisible{
+  display: none;
+}
+
+.dropped{
+  position: absolute;
+  z-index: 10;
+  background-color: #D0CFEC;
+}
+
+.winner{
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 40px;
+  z-index: 10;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid gray;
+  padding: 0 58px;
+  padding-top: 50px;
+  border-radius: 10px;
+}
+
+#restart{
+  display: block;
+  margin: 40px auto;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgb(190, 190, 190);
+  background-color: white;
+  color: black;
+  &:hover{
+    color:white;
+    background-color: black;
+    cursor: pointer;
+  }
+}
+
+.title{
+  font-size: 60px;
+  position: absolute;
+  padding: 30px;
+}
+
+#btn-randomize{
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(190, 190, 190);
+  cursor: pointer;
+  &:hover{
+    background-color: #FF3366;
+    color: #A9FFCB;
+  }
+}
+
+#btn-game-start{
+  padding: 10px 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(190, 190, 190);
+  background-color: #A9FFCB;
+  &:hover{
+    background-color:#210B2C;
+    color: #A9FFCB;
+  }
+  &:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.number-index{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right:5px;
+  &-item{
+    height: 40px;
+    padding-top: 10px;
+    &-special{
+      height: 21px;
+    }
+  }
+}
