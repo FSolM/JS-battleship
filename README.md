@@ -1,5 +1,5 @@
 # JavaScript BattleShip
-### JS Module Pattern, Drag and Drop, Boardgame
+### JS Module Pattern, Drag and Drop, Boardgame, DOM Manipulation
 #### Project 7
 
 ## Usage & Installation
