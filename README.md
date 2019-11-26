@@ -2,6 +2,8 @@
 ### A web-based Battleship game using JS Module Pattern, Drag and Drop, Boardgame, DOM Manipulation
 #### Project 7
 
+**Live Page:** https://fsolm.github.io/JS-battleship/
+
 ## Usage & Installation
 
 Install npm modules:
